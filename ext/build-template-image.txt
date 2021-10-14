@@ -58,7 +58,7 @@ fdisk redpill-template.img
     Select (default p): p
     Partition number (2-4, default 2): 2
     First sector (264192-524288, default 264192):
-    Last sector, +/-sectors or +/-size{K,M,G,T,P} (264192-524288, default 524288): +120M
+    Last sector, +/-sectors or +/-size{K,M,G,T,P} (264192-524288, default 524288): +100M
 
     Command (m for help): n
     Select (default p): p
@@ -73,7 +73,7 @@ fdisk redpill-template.img
 fdisk -l redpill-template.img  # verify if the result looks like below
    Device                Boot  Start    End Sectors Size Id Type
    redpill-template.img1        2048 264191  262144 128M 83 Linux
-   redpill-template.img2      264192 468991  204800 120M 83 Linux
+   redpill-template.img2      264192 468991  204800 100M 83 Linux
    redpill-template.img3      468992 524288   55296  27M 83 Linux
 
 losetup -P /dev/loop8 redpill-template.img
