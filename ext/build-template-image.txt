@@ -76,27 +76,27 @@ fdisk -l redpill-template.img  # verify if the result looks like below
    redpill-template.img2      206848 360447  153600  75M 83 Linux
    redpill-template.img3      360448 409659   49152  24M 83 Linux
 
-losetup -P /dev/loop8 redpill-template.img
-mkdosfs -F32 /dev/loop8p1
-mkfs.ext2 /dev/loop8p2
+losetup -P /dev/loop18 redpill-template.img
+mkdosfs -F32 /dev/loop18p1
+mkfs.ext2 /dev/loop18p2
 
 ########################################################################################################################
 ### Install grub
 ########################################################################################################################
 mkdir temp-mount-p1
-mount /dev/loop8p1 ./temp-mount-p1
+mount /dev/loop18p1 ./temp-mount-p1
 ./grub-2.06/build-pc/grub-install \
     --target=i386-pc --recheck -s \
     --boot-directory=$PWD/temp-mount-p1/boot \
-    /dev/loop8
+    /dev/loop18
 
 ./grub-2.06/build/grub-install \
     --target=x86_64-efi \
 	--efi-directory=$PWD/temp-mount-p1 \
     --removable --no-nvram -s --no-bootsector --boot-directory=$PWD/temp-mount-p1/boot
 sync
-umount /dev/loop8p1
-losetup -d /dev/loop8
+umount /dev/loop18p1
+losetup -d /dev/loop18
 
 ########################################################################################################################
 ### Pack image
